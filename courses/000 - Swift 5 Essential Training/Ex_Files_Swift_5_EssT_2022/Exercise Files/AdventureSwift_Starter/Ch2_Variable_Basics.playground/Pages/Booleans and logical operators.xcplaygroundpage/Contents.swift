@@ -14,8 +14,9 @@
  
  */
 // Test variable
-
+var isSingle: Bool = true
 
 // Logical operators (!, &&, ||)
-
-
+!isSingle
+isSingle && false
+isSingle || false

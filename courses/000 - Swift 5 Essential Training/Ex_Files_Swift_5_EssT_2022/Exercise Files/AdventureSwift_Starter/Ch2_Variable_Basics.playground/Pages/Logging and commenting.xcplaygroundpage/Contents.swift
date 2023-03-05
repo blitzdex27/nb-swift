@@ -11,4 +11,10 @@
  
 [Previous Topic](@previous)                                                 [Next Topic](@next)
  */
+// this is a comment, a single line one
 
+/*
+ this is a multi-line comment
+ */
+
+/// this is also a single line comment

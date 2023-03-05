@@ -13,13 +13,21 @@
  
  */
 // Test variable
-
+var message: String = "Hello friend, how are you? Are you going home?"
 
 // String data
-
+message.count
+message.isEmpty
+message.contains("Hello")
 
 // Append and Insert
-
+message.append("Now?")
 
 // Remove and Split
+message.removeFirst()
+message.removeLast()
+//message.removeAll()
 
+message.split(separator: ",")
+
+print(message)

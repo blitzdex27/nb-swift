@@ -13,7 +13,14 @@
 
 */
 // Creating optionals
-
+var name: String?
+var age: Int?
 
 // Forced unwrapping
+//print(name!) // returns error
+
+/* force unwrapping can make the app crash since it has no fallback if ever the variable is nil*/
+
+/// unwrapping
+print(name ?? "empty")
 

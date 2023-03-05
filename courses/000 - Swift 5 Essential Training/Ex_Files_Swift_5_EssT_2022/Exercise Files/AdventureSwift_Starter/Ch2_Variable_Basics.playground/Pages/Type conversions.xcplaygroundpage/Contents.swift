@@ -14,10 +14,16 @@
  
 */
 // Test variables
-
+var numInt: Int = 20
+var numFloat: Float = 10.2
+var numDouble: Double = 30.6
 
 // Explicit conversions
+var convertedNumInt: Float = Float(numInt)
+var convertedNumFloat: Int = Int(Double(numFloat) + numDouble)
+var convertedNumDouble: Float = Float(numDouble)
 
+print(convertedNumDouble)
 
 // Inferred conversion with operators
 

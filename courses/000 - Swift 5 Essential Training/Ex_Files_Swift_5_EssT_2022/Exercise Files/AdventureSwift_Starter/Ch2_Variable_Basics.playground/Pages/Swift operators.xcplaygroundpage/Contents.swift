@@ -12,12 +12,18 @@
  
  */
 // Arithmetic (+, -, /, *)
-
+var totalCost: Int = 20 + 2 / 1 * 3 - 4
 
 // Compound assignments (+=, -=, *=, /=, %=)
-
+totalCost += 1
+totalCost -= 1
+totalCost *= 2
+totalCost /= 2
+//totalCost %= 2
 
 // Modulo (%)
+totalCost % 3
+totalCost % 10
 
 
 

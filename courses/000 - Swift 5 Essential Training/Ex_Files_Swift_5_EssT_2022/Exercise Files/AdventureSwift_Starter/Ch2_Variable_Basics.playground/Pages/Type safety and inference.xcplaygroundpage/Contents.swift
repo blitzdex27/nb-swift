@@ -15,9 +15,15 @@
  
 */
 // Type inference
-
+var name = "Dekstur"
 
 // Type annotation
+let nickname: String
+nickname = "Deks"
+
+let age, height, weight: Int
+
+
 
 
 // Type annotation + inference

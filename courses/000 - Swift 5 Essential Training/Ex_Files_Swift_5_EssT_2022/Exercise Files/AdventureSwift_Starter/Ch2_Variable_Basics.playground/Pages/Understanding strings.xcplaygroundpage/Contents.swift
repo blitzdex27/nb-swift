@@ -14,10 +14,11 @@
  
  */
 // Declaring strings
-
+var name: String;
+var noName: String = ""
 
 // Concatenation
-
-
+noName += "no name"
+name = "From " + noName + " to Deks"
 // String interpolation
-
+var message = "Hello \(name)"
