@@ -15,7 +15,7 @@
  
  */
 // 1
-
+var shopItemsArray: [String] = 
 // 2
 
 // 3

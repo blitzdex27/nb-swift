@@ -15,10 +15,20 @@
 
  */
 // Creating dictionaries
-
+var prices: Dictionary<String, Int> = [ "Apple": 20, "Orange": 20]
+var prices2: [String: Int] = [ "Pencil": 10, "Eraser": 5 ]
 
 // Accessing and modifying values
+print(prices["Apple"] ?? 10)
+prices["Apple"] = 15 as Int
 
 
 // All keys and values
+print(prices.keys)
+var priceKeyes = [String](prices.keys)
+print(priceKeyes)
+
+var priceValues = [Int](prices.values)
+
+
 

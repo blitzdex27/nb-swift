@@ -15,10 +15,14 @@
  
  */
 // Creating arrays
-
+var names: [String] = [] // empty array
+var names2: Array<String> = Array<String>() // empty array using longer syntax
+var names3: [[String]] = [["Dekstur", "Terroy", "IamDexter", "Warheit"]] // array of array of strings
+var names4: Array<Array<String>> = Array<Array<String>>() // equivalent syntax from the previous line
 
 // Count and isEmpty
-
+names.count
+names.isEmpty
 
 // Accessing array values
-
+names3[0]

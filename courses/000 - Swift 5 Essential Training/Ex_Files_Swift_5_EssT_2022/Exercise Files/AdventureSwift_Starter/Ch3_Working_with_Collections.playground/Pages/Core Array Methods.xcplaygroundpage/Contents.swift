@@ -17,13 +17,26 @@
  
  */
 // Changing & appending items
-
+var names: [String] = ["Dekstur", "Dexter", "IamDexter"]
+names[0] = "dekstur"
+names.append("Terroy")
+names += ["Warheit", "Nabei"]
 
 //Inserting and removing items
+names.insert("Han li", at: 1)
+names.insert(contentsOf: ["Linley", "Wang Lin"], at: 3)
+names.remove(at: 4)
 
 
 // Ordering and querying values
+//names.sort()
+//names.reverse()
 
+var sortedNames: [String] = names.sorted()
+var reverseSortedNames: [String] = names.reversed()
+
+names.contains("Dexter")
 
 // 2D arrays and subscripts
-
+var twoDArray: [[String]] = [names]
+twoDArray[0][0]
