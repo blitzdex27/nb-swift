@@ -1,63 +1,101 @@
 /* Swift 5: Protocol oriented programming */
 /* Chapter 2 challenge - Remove tight coupling */
-/* repeat times: 0 */
+/* repeat times: 1 */
 
 /* Sources.swift */
 
 import Foundation
 
-public class AmazonService {
+protocol Service {
+    var income: Float { get }
+    func placeOrder(price: Float) -> Void
+}
+
+private class AmazonService {
     private var balance: Float = 0
     
-    public init() {}
+    fileprivate init() {}
     
-    public func orderPlaced(payment: Float) {
+    private func orderPlaced(payment: Float) {
         balance += payment
     }
     
-    public var earnings: Float {
+    private var earnings: Float {
         return balance
     }
 }
 
-public class EtsyService {
+extension AmazonService: Service {
+    var income: Float {
+        return balance
+    }
+    func placeOrder(price: Float) -> Void {
+        orderPlaced(payment: price)
+    }
+}
+
+private class EtsyService {
     private var earnings: Float = 0
     
-    public init() {}
+    fileprivate init() {}
     
-    public func itemSold(profit: Float) {
+    private func itemSold(profit: Float) {
         earnings += profit
     }
     
-    public var totalSold: Float {
+    private var totalSold: Float {
         return earnings
+    }
+}
+
+extension EtsyService: Service {
+    var income: Float {
+        return earnings
+    }
+    func placeOrder(price: Float) -> Void {
+        itemSold(profit: price)
+    }
+}
+
+enum ServiceType {
+    case Amazon
+    case Etsy
+}
+
+func make(service: ServiceType) -> Service {
+    switch(service) {
+        case .Amazon:
+            return AmazonService()
+        case .Etsy:
+            return EtsyService()
     }
 }
 
 
 /* Contents.swift */
+
 class PaymentController {
-    let amazonService: AmazonService
-    let etsyService: EtsyService
+    let services: [Service]
     
-    init(amazon: AmazonService, etsy: EtsyService) {
-        amazonService = amazon
-        etsyService = etsy
+    init(services: [Service]) {
+        self.services = services
     }
     
     func calculateEarnings() -> Float {
-        amazonService.earnings + etsyService.totalSold
+        self.services.reduce(0) {
+            $0 + $1.income
+        }
     }
 }
 
-let amazonService = AmazonService()
-let etsyService = EtsyService()
+let amazonService = make(service: .Amazon)
+let etsyService = make(service: .Etsy)
 
-let controller = PaymentController(amazon: amazonService, etsy: etsyService)
+let controller = PaymentController(services: [amazonService, etsyService])
 
-amazonService.orderPlaced(payment: 100)
-etsyService.itemSold(profit: 25)
-amazonService.orderPlaced(payment: 12.50)
+amazonService.placeOrder(price: 100)
+etsyService.placeOrder(price: 25)
+amazonService.placeOrder(price: 12.50)
 
 print("Total earned: \(controller.calculateEarnings())")
 
