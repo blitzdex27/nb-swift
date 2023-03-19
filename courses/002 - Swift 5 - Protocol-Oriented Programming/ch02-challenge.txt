@@ -1,0 +1,101 @@
+/* Swift 5: Protocol oriented programming */
+/* Chapter 2 challenge - Remove tight coupling */
+/* repeat times: 1 */
+
+/* Sources.swift */
+
+import Foundation
+
+protocol Service {
+    var income: Float { get }
+    func placeOrder(price: Float) -> Void
+}
+
+private class AmazonService {
+    private var balance: Float = 0
+    
+    fileprivate init() {}
+    
+    private func orderPlaced(payment: Float) {
+        balance += payment
+    }
+    
+    private var earnings: Float {
+        return balance
+    }
+}
+
+extension AmazonService: Service {
+    var income: Float {
+        return balance
+    }
+    func placeOrder(price: Float) -> Void {
+        orderPlaced(payment: price)
+    }
+}
+
+private class EtsyService {
+    private var earnings: Float = 0
+    
+    fileprivate init() {}
+    
+    private func itemSold(profit: Float) {
+        earnings += profit
+    }
+    
+    private var totalSold: Float {
+        return earnings
+    }
+}
+
+extension EtsyService: Service {
+    var income: Float {
+        return earnings
+    }
+    func placeOrder(price: Float) -> Void {
+        itemSold(profit: price)
+    }
+}
+
+enum ServiceType {
+    case Amazon
+    case Etsy
+}
+
+func make(service: ServiceType) -> Service {
+    switch(service) {
+        case .Amazon:
+            return AmazonService()
+        case .Etsy:
+            return EtsyService()
+    }
+}
+
+
+/* Contents.swift */
+
+class PaymentController {
+    let services: [Service]
+    
+    init(services: [Service]) {
+        self.services = services
+    }
+    
+    func calculateEarnings() -> Float {
+        self.services.reduce(0) {
+            $0 + $1.income
+        }
+    }
+}
+
+let amazonService = make(service: .Amazon)
+let etsyService = make(service: .Etsy)
+
+let controller = PaymentController(services: [amazonService, etsyService])
+
+amazonService.placeOrder(price: 100)
+etsyService.placeOrder(price: 25)
+amazonService.placeOrder(price: 12.50)
+
+print("Total earned: \(controller.calculateEarnings())")
+
