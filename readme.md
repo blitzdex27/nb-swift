@@ -2,4 +2,10 @@
 
 ## Helpful links
 -  [Writing High-Performance Swift Code](https://github.com/apple/swift/blob/main/docs/OptimizationTips.rst#writing-high-performance-swift-code)
--  
+-  [Technotes](https://developer.apple.com/documentation/Technotes)
+-  [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines)
+-  [Naming Conventions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html#//apple_ref/doc/uid/10000146-SW1)
+-  [Accessibility](https://developer.apple.com/design/human-interface-guidelines/accessibility)
+-  [Optimizing for App Store search](https://developer.apple.com/app-store/search/)
+-  [Develop apps for iOS](https://developer.apple.com/tutorials/app-dev-training)
+-  [Why would you rely on just one technology over the next 10–20 years of your career?](https://codecat15.medium.com/why-would-you-rely-on-just-one-technology-over-the-next-10-20-years-of-your-career-da1f38b56f74)
