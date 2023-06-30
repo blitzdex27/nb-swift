@@ -2,6 +2,6 @@
 
 ```mermaid
     graph TD;
-    A-->B;
-    A-->C;
+    Swift Apprentice-->UIKit Apprentice;
+    Swift Apprentice-->SwiftUI Apprentice;
 ```
