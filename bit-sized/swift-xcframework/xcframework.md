@@ -1,6 +1,6 @@
 # Swift XCFramework
 
-TLDR:
+TLDR;
 1. Create Framework project
 2. Put your code
 3. Build archives
@@ -14,20 +14,20 @@ On your `Project > Build Settings (All) > Build Options`, set the `BUILD_LIBRARI
 
 ## Put your code
 
-Code as you normally do. Test as you normally do. No need edit the single self-generated `FrameworkProjectName.h` file on project creation.
+Code as you normally do. Test as you normally do. No need to edit the single self-generated `FrameworkProjectName.h` file on project creation.
 
 ## Build archives
 
 Create archives for each platform you want to support (e.g. iOS, iOS Simulator, macOS, Mac Catalyst)
 
-The following code will create an archive for iOS platform.
+The following code will create an archive for iOS Simulator platform.
 
 ```bash
 xcodebuild archive 
     -project FrameworkDemo.xcodeproj
     -scheme FrameworkDemo
-    -destination "generic/platform=iOS"
-    -archivePath "archives/FrameworkDemo-iOS"
+    -destination "generic/platform=iOS Simulator"
+    -archivePath "archives/FrameworkDemo-iOS_Simulator"
     SKIP_INSTALL=NO 
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
 ```
@@ -47,12 +47,12 @@ Note: Do not forget to change the `arhivePath` for each platform you support (e.
 
 Build framework that you can use on your other projects.
 
-On your terminal, change the current directory to the framework project and enter the following in a single line.
+The following code will use the framework inside the *archives/FrameworkDemo-iOS_Simulator.xcarchive* to create the framework that supports a single platform, which is *iOS Simulator*.
 
 ```bash
 xcodebuild 
     -create-xcframework 
-    -archive archives/FrameworkDemo-iOS.xcarchive 
+    -archive archives/FrameworkDemo-iOS_Simulator.xcarchive 
     -framework FrameworkDemo.framework 
     -output xcframeworks/FrameworkDemo.xcframework
 ```
