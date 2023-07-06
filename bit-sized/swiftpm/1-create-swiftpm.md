@@ -7,15 +7,23 @@ On Xcode Menu: `File > New > Package`, name it as you please.
 The package project should look similar to this:
 
 ```
-SwiftPackageDemo
+MyPackage
 ├── Package.swift
 ├── README.md
 ├── Sources
-│   └── SwiftPackageDemo
-│       └── SwiftPackageDemo.swift
+│   └── MyPackage
+│       └── MyPackage.swift
 └── Tests
-    └── SwiftPackageDemoTests
-        └── SwiftPackageDemoTests.swift
+    └── MyPackageTests
+        └── MyPackageTests.swift
+```
+
+You can create the same package using terminal:
+
+```bash
+mkdir MyPackage
+cd MyPackage
+swift package init
 ```
 
 ## Setup package
