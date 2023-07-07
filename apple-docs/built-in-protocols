@@ -1,0 +1,11 @@
+# Built in protocols
+
+Collections
+
+- Collection protocol - A sequence whose elements can be traversed multiple times, nondestructively, and accessed by an indexed subscript
+- RangeReplaceableCollection protocol - A collection that supports replacement of an arbitrary subrange of elements with the elements of another collection.
+- Hashable protocol
+
+Strings
+
+- StringProtocol - A type that can represent a string as a collection of characters.
