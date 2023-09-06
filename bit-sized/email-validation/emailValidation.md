@@ -4,8 +4,7 @@ TLDR;
 
 ```objc
 NSString *email = @"john.doe_27@example.com.uk";
-NSString *regex = @"^(?:(?:(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+(?:(?:\\.(?!\\.))?(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+)*)|(?:\"(?:[^\"\\\\]|\\\\.)*\"))@(?:(?:[a-zA-Z0-9])+(?:\\.(?:[a-zA-Z0-9])+(?:[a-zA-Z0-9-])*(?:[a-zA-Z0-9]))+)$
-";
+NSString *regex = @"^(?:(?:(?:(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+(?:(?:\\.(?!\\.))?(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+)*)|(?:\"(?:[^\"\\\\]|\\\\.)*\"))@(?:(?:[a-zA-Z0-9])+(?:\\.(?:[a-zA-Z0-9])+(?:[a-zA-Z0-9-])*(?:[a-zA-Z0-9]))+))$";
 NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     
 BOOL isValidEmail = [pred evaluateWithObject:email];
@@ -80,7 +79,7 @@ NSString *localRegex = @"(?:(?:(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+(?:(?:\\.(?!\\
 
 NSString *domainRegex = @"(?:(?:[a-zA-Z0-9])+(?:\\.(?:[a-zA-Z0-9])+(?:[a-zA-Z0-9-])*(?:[a-zA-Z0-9]))+)";
 
-NSString *emailRegex = [NSString stringWithFormat:@"(?:%@@%@)",localRegex, domainRegex];
+NSString *emailRegex = [NSString stringWithFormat:@"^(?:%@@%@)$",localRegex, domainRegex];
 
 NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", combined];
     
@@ -103,15 +102,16 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
 ## Test cases
 
 ```objc
-@implementation NSString_ValidateEmailTests
-
-// MARK: - Email local part tests
-
 - (void)testEmailSimple {
     NSArray<NSString *> *emails = @[
-        @"user@example.com",
+        @"user27@example.com",
         @"john.doe@example.com",
         @"jane_doe@example.com",
+        @"john.johnny.doe@example.com",
+        @"user1@example.com",
+        @"john.doe1@example.com",
+        @"jane_doe1@example.com",
+        @"john.johnny.doe1@example.com",
     ];
     
     for (NSString *email in emails) {
@@ -119,40 +119,56 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
     }
 }
 
-- (void)testEmailQuoted {
-    NSArray<NSString *> *emails = @[
-        @"\"user\"@example.com",
-        @"\"john doe\"@example.com",
-        @"jane_doe@example.com",
-    ];
-    
-    for (NSString *email in emails) {
-        XCTAssertTrue(email.isEmail, @"Email validation failed for %@", email);
-    }
-}
-
-
-/// - RFC 5321 states that the local part of the email address should be interpreted and treated as case-sensitive by the receiving email server.
-/// - However, in practice, most email providers and servers choose to ignore the case sensitivity of the local part to avoid confusion and to ensure seamless email delivery, including Google
-- (void)testEmailLocalPartCaseInsensitivity {
-
-    NSArray<NSString *> *validEmails = @[
-        @"uSeR@example.com",
-        @"uSeR.uSEr@example.com",
-        @"usEr.useR.usEr@example.com",
-        @"usEr_useR+usEr@example.com"
-    ];
-    
-    for (NSString *email in validEmails) {
-        XCTAssertTrue(email.isEmail, @"Email validation failed for %@", email);
-    }
-}
-
-- (void)testEmailWithPlusSignInLocalPart {
+- (void)testEmailWithPlusSign {
     NSArray<NSString *> *emails = @[
         @"user+support@example.com",
         @"jane+123@example.com",
         @"info+sales@example.com",
+    ];
+    
+    for (NSString *email in emails) {
+        XCTAssertTrue(email.isEmail, @"Email validation failed for %@", email);
+    }
+}
+
+- (void)testEmailAlphaOnly {
+    NSArray<NSString *> *emails = @[
+        @"a@b.cd",
+        @"a@b.cde",
+        @"user@example.com",
+        @"user.reuse@example.com",
+        @"user.reuse.reduce@example.com",
+        @"user.reuse.reduce.recycle@example.com",
+        @"qwertyuiopasdfghjklzxcvbnm@example.com",
+        @"q.w.e.r.t.y.u.i.o.p.a.s.d.f.g.h.j.k.l.z.x.c.v.b.n.m@example.com",
+        @"qwertyuiopasdfghjklzxcvbnm.qwertyuiopasdfghjklzxcvbnm.qwertyuiopasdfghjklzxcvbnm@example.com",
+    ];
+    
+    for (NSString *email in emails) {
+        XCTAssertTrue(email.isEmail, @"Email validation failed for %@", email);
+    }
+}
+
+- (void)testEmailAlphaNumericOnly {
+    NSArray<NSString *> *emails = @[
+        @"a1@b.cd",
+        @"a2@b.cde",
+        @"us3er@example.com",
+        @"use4r.re5use@example.com",
+        @"u7ser.reu6se.r8educe@example.com",
+        @"us9er.re0use.red1uce.rec2ycle@example.com",
+        @"qwe3rtyuiopasdf4ghjkl5zxc6vbn7m@example.com",
+        @"q.w.e.r18.t.y.u.i.o.p.a.s.d.f.19g.h.j.k.l.z.20x.c.v.b21.n.m@example.com",
+        @"qwer22tyuiopa23sdfghjklzxc24vbnm.qw25ertyuiopa26sdfghj27klzxc28vbnm.qwerty29uiopasdfghjklzxcvbnm@example.com",
+        @"30a@b.cd",
+        @"a31@b.cde",
+        @"32user9@example.com",
+        @"use33r.reuse0@example.com",
+        @"5user.reuse.reduce@example1.com",
+        @"7user.reuse.reduce.recycle@example.com",
+        @"8qwertyuiopasdfghjklzxcvbnm@example.com",
+        @"9q.w.e.r.t.y.u.i.o.p.a.s.d.f.g.h.j.k.l.z.x.c.v.b.n.m@example.com",
+        @"0qwertyuiopasdfghjklzxcvbnm.qwertyuiopasdfghjklzxcvbnm.qwertyuiopasdfghjklzxcvbnm@example.com",
     ];
     
     for (NSString *email in emails) {
@@ -189,6 +205,50 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
     }
 }
 
+/// Local part can be enclosed with quotes
+///
+/// - no character restriction inside quotes as long as it is not a backslash or quote
+/// - quoted local part can accepts quotes and backslashes as long as they are preceded by backslash
+- (void)testEmailQuoted {
+    /*
+     "user"@example.com
+     "john doe"@example.com
+     "jane_doe"@example.com
+     "john\\ \\doe"@example.com
+     "john\\ doe\"@example.com
+     "john \"johnny\" doe"@example.com
+     "john \"johnny doe"@example.com
+     */
+    NSArray<NSString *> *emails = @[
+        @"\"user\"@example.com",
+        @"\"john doe\"@example.com",
+        @"jane_doe@example.com",
+        @"\"john\\ \\doe\"@example.com",
+        @"\"john\\ doe\"@example.com",
+        @"\"john \\\"johnny\\\" doe\"@example.com",
+        @"\"john \\\"johnny doe\"@example.com",
+    ];
+    
+    for (NSString *email in emails) {
+        XCTAssertTrue(email.isEmail, @"Email validation failed for %@", email);
+    }
+}
+
+/// - local part of the email address should be interpreted and treated as case-sensitive by the receiving email server (RFC 5321)
+/// - in practice, most email providers and servers, including Google ignore case sensitivity
+- (void)testEmailCaseInsensitivity {
+    NSArray<NSString *> *validEmails = @[
+        @"uSeR@example.com",
+        @"uSeR.uSEr@example.com",
+        @"usEr.useR.usEr@example.com",
+        @"usEr_useR+usEr@example.com",
+    ];
+    
+    for (NSString *email in validEmails) {
+        XCTAssertTrue(email.isEmail, @"Email validation failed for %@", email);
+    }
+}
+
 // MARK: - Email Domain part tests
 
 - (void)testEmailWithSubDomain {
@@ -219,12 +279,7 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
 /// Test with valid top level domains listed by IANA (Internet Assigned Numbers Authority)
 ///
 /// Reference: https://data.iana.org/TLD/tlds-alpha-by-domain.txt
-///
-/// Note:
-/// There are foreign characters not included in the regex. The app is only available in the Philippines so they were not included in the regex.. https://www.iana.org/domains/root/db
-/// 
-- (void)testAllTopLevelDomainsWithValidEmails {
-    
+- (void)testEmailWithAllTopLevelDomains {
     NSArray<NSString *> *validEmails = @[
         @"user@example.com.uk",
         @"info@sub.example.com.ph",
@@ -233,14 +288,11 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
     ];
     
     for (NSString *email in validEmails) {
-        
-        
         for (NSString *tld in self.topLevelDomains) {
             NSString *modifiedEmail = [email stringByReplacingOccurrencesOfString:@".com" withString:[NSString stringWithFormat:@".%@", tld]];
             XCTAssertTrue(modifiedEmail.isEmail, @"Email validation failed for %@", [NSString stringWithFormat:@"%@ - %@", email, modifiedEmail]);
         }
     }
-    
 }
 
 // MARK: - Test invalid emails
@@ -254,8 +306,14 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
         @"user@name@example.com",
         @"user@name@example..com",
         @"user@example..com",
+        @"user..us@example.com",
+        @"user...us@example.com",
+        @"user..use@example.com",
+        @"user..user@example.com",
+        @"user...use@example.com",
+        @"user.ue..a.se@example.com",
+        @"user...user@example.com",
         @"user@example.",
-        @"user@.example.com",
         @"user@com",
         @"user@-example.com",
         @"user@example.com!",
@@ -263,6 +321,57 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
         @"user@example_com",
         @"user@example.com?",
         @"user@example..com",
+        @"us\"er@example..com",
+        @"us\\er@example..com",
+        @"user@examp`le.com",
+        @"user@exam~le.com",
+        @"user@exam!le.com",
+        @"user@exam@le.com",
+        @"user@exam#le.com",
+        @"user@exam$le.com",
+        @"user@exam%le.com",
+        @"user@exam^le.com",
+        @"user@exam&le.com",
+        @"user@exam*le.com",
+        @"user@exam(le.com",
+        @"user@exam)le.com",
+        @"user@exam{le.com",
+        @"user@exam}le.com",
+        @"user@exam[le.com",
+        @"user@exam]le.com",
+        @"user@exam|le.com",
+        @"user@exam\\le.com",
+        @"user@exam/le.com",
+        @"user@exam:le.com",
+        @"user@exam;le.com",
+        @"user@exam\"le.com",
+        @"user@exam'le.com",
+        @"user@exam<le.com",
+        @"user@exam>le.com",
+        @"user@exam,le.com",
+        @"user@exam?le.com",
+        @"user@-examle.com",
+        @"user@--exam?le.com",
+        @"user@-exam?le.com",
+        @"user@.example.com",
+        @"user@..example.com",
+        @"\"user@exampple.com",
+        @"plainaddress", // reference: https://gist.github.com/cjaoude/fd9910626629b53c4d25
+        @"#@%^%#$@#$@#.com",
+        @"@example.com",
+        @"Joe Smith <email@example.com>",
+        @"email.example.com",
+        @"email@example@example.com",
+        @".email@example.com",
+        @"email.@example.com",
+        @"email..email@example.com",
+        @"email@example.com (Joe Smith)",
+        @"email@-example.com",
+        @"email@example..com",
+        @"Abc..123@example.com",
+        @"\"(),:;<>[\\]@example.com",
+        @"just”not”right@example.com",
+        @"this\\ is\"really\"not\allowed@example.com",
     ];
     
     for (NSString *email in invalidEmails) {
@@ -272,7 +381,7 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
 
 - (NSArray<NSString *> *)topLevelDomains {
     if (!_topLevelDomains) {
-        NSString *path = [[NSBundle bundleForClass:[NSString_ValidateEmailTests class]] pathForResource:@"top-level-domain-list" ofType:@"json"];
+        NSString *path = [[NSBundle bundleForClass:[NSString_Check_isEmailTests class]] pathForResource:@"top-level-domain-list" ofType:@"json"];
         NSError *error = nil;
         NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMapped error:&error];
         
@@ -299,3 +408,4 @@ NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg
 - https://en.wikipedia.org/wiki/Email_address
 - http://www.iana.org/domains/root/db
 - https://data.iana.org/TLD/tlds-alpha-by-domain.txt
+- https://gist.github.com/cjaoude/fd9910626629b53c4d25
