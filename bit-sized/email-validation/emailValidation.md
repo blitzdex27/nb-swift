@@ -4,7 +4,8 @@ TLDR;
 
 ```objc
 NSString *email = @"john.doe_27@example.com.uk";
-NSString *regex = @"^(?:(?:(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])+(?:(?:[\\.(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])])*(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])))|(?:\"(?:[^\"\\\\]|\\\\.)*\"))@(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)$";
+NSString *regex = @"^(?:(?:(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+(?:(?:\\.(?!\\.))?(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+)*)|(?:\"(?:[^\"\\\\]|\\\\.)*\"))@(?:(?:[a-zA-Z0-9])+(?:\\.(?:[a-zA-Z0-9])+(?:[a-zA-Z0-9-])*(?:[a-zA-Z0-9]))+)$
+";
 NSPredicate *    pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     
 BOOL isValidEmail = [pred evaluateWithObject:email];
@@ -24,7 +25,7 @@ BOOL isValidEmail = [pred evaluateWithObject:email];
 Using the above constraints, we have:
 
 ```objc
-NSString *localRegex = @"(?:(?:(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])+(?:(?:[\\.(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])])*(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])))|(?:\"(?:[^\"\\\\]|\\\\.)*\"))";
+NSString *localRegex = @"(?:(?:(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+(?:(?:\\.(?!\\.))?(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+)*)|(?:\"(?:[^\"\\\\]|\\\\.)*\"))";
 ```
 
 If we want to breakdown the regex, we have:
@@ -75,7 +76,7 @@ Format: `localpart`@`domainpart`
 ```objc
 NSString *email = @"john.doe_27@example.com.uk";
 
-NSString *localRegex = @"(?:(?:(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])+(?:(?:[\\.(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])])*(?:[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~])))|(?:\"(?:[^\"\\\\]|\\\\.)*\"))";
+NSString *localRegex = @"(?:(?:(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+(?:(?:\\.(?!\\.))?(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-])+)*)|(?:\"(?:[^\"\\\\]|\\\\.)*\"))";
 
 NSString *domainRegex = @"(?:(?:[a-zA-Z0-9])+(?:\\.(?:[a-zA-Z0-9])+(?:[a-zA-Z0-9-])*(?:[a-zA-Z0-9]))+)";
 
