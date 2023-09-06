@@ -11,3 +11,4 @@
 -  [Why would you rely on just one technology over the next 10–20 years of your career?](https://codecat15.medium.com/why-would-you-rely-on-just-one-technology-over-the-next-10-20-years-of-your-career-da1f38b56f74)
 -  [How We Reduced Our iOS App Launch Time by 60%](https://doordash.engineering/2023/01/31/how-we-reduced-our-ios-app-launch-time-by-60/)
 -  [Gitignore](https://www.toptal.com/developers/gitignore)
+-  [Xcode default header](https://oleb.net/blog/2017/07/xcode-9-text-macros)
