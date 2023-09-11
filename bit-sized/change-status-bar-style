@@ -1,0 +1,17 @@
+# Swift - How to change status bar style
+
+1. **Set Info.plist**: In your application’s Info.plist, set `View controller-based status bar appearance` to YES.
+
+2. **Override preferredStatusBarStyle**: In your view controller, override preferredStatusBarStyle. For example:
+
+```swift
+override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+}
+```
+
+3. **Update Status Bar**: If you want to change the status bar style dynamically, call `setNeedsStatusBarAppearanceUpdate()`.
+
+> **Note**
+>
+> Remember, your app’s status bar style should be set to a value that’s compatible with your app’s background color: `.lightContent`or `.darkContent`.
