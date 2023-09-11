@@ -43,3 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
 
 Done.
+
+## Method 2 - Method Swizzling
+
+```swift
+import Foundation
+import UIKit
+
+extension UIApplication {
+    
+    static let swizzleSendEvent: Void = {
+        let originalSelecto = #selector(UIApplication.sendEvent(_:))
+        let swizzleSelector = #selector(UIApplication.customEvent(_:))
+        
+        let originalMethod = class_getInstanceMethod(UIApplication.self, originalSelecto)
+        let swizzledMethod = class_getInstanceMethod(UIApplication.self, swizzleSelector)
+        
+        method_exchangeImplementations(originalMethod!, swizzledMethod!)
+    }()
+    
+    @objc func customEvent(_ event: UIEvent) {
+        print("event triggered! \(event)")
+        customEvent(event)
+    }
+}
+```
