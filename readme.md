@@ -12,3 +12,4 @@
 -  [How We Reduced Our iOS App Launch Time by 60%](https://doordash.engineering/2023/01/31/how-we-reduced-our-ios-app-launch-time-by-60/)
 -  [Gitignore](https://www.toptal.com/developers/gitignore)
 -  [Xcode default header](https://oleb.net/blog/2017/07/xcode-9-text-macros)
+-  [Swift Style Guide](https://google.github.io/swift/#apples-api-style-guidelines)
