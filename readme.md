@@ -13,3 +13,4 @@
 -  [Gitignore](https://www.toptal.com/developers/gitignore)
 -  [Xcode default header](https://oleb.net/blog/2017/07/xcode-9-text-macros)
 -  [Swift Style Guide](https://google.github.io/swift/#apples-api-style-guidelines)
+-  [Apple Developer Account Guide](https://developer.apple.com/help/account/get-started/about-your-developer-account)
