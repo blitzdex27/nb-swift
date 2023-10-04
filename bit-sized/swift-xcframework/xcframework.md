@@ -123,6 +123,10 @@ xcodebuild
     -output './build/FrameworkDemo.xcframework'
 ```
 
+## If you want to create Pods instead
+
+https://dev.to/ankushppie/creating-custom-pods-in-swift-for-ios-a-step-by-step-guide-1p6g
+
 ## References
 
 - https://developer.apple.com/documentation/xcode/creating-a-multi-platform-binary-framework-bundle
