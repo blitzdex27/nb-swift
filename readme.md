@@ -15,3 +15,4 @@
 -  [Swift Style Guide](https://google.github.io/swift/#apples-api-style-guidelines)
 -  [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/)
 -  [Apple Developer Account Guide](https://developer.apple.com/help/account/get-started/about-your-developer-account)
+-  [Minimum requirements and supported SDKs](https://developer.apple.com/support/xcode/)
