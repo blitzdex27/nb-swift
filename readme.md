@@ -16,3 +16,4 @@
 -  [Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/)
 -  [Apple Developer Account Guide](https://developer.apple.com/help/account/get-started/about-your-developer-account)
 -  [Minimum requirements and supported SDKs](https://developer.apple.com/support/xcode/)
+-  [XCode help](https://help.apple.com/xcode/mac/11.4/)
