@@ -18,6 +18,7 @@
 -  [Minimum requirements and supported SDKs](https://developer.apple.com/support/xcode/)
 -  [XCode help](https://help.apple.com/xcode/mac/11.4/)
 - [Runway - One platform to automate & coordinate app releases](https://www.runway.team/features/mobile-release-management?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_206)
+- [How to create a framework in iOS](https://www.kodeco.com/2430-how-to-create-a-framework-for-ios)
 
 ## Hacking with swift
 - [Superwall](https://superwall.com/?utm_source=hacking-with-swift-website&utm_medium=website&utm_campaign=hacking-with-swift-2024&utm_id=4&utm_term=week-2&utm_content=hacking-with-swift-4&ref=hacking-with-swift-6)
