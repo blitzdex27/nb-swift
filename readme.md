@@ -22,6 +22,7 @@
 - [Play: The secret weapon for iOS developers](https://youtu.be/oDz8hxWaIuE?si=6jadZEeP1D7GQiqJ)
 ## Hacking with swift
 - [Superwall](https://superwall.com/?utm_source=hacking-with-swift-website&utm_medium=website&utm_campaign=hacking-with-swift-2024&utm_id=4&utm_term=week-2&utm_content=hacking-with-swift-4&ref=hacking-with-swift-6)
+- [Free assets - Kenney](https://kenney.nl/assets)
 
 ## Free REST API
 - [REQRES](https://reqres.in/)
