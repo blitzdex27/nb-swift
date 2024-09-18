@@ -2,6 +2,7 @@
 
 
 ## Handling Routes for different app states (foreground, background, and terminated state)
+You can handle the notification using various delegate methods. You can handle it directly without user tapping on it while in foreground. You can handle notification taps from foreground, background, and even in terminated states.
 
 ### Summary
 
@@ -66,7 +67,7 @@ Note: This delegate method upon calling completionHandler, will call the `userNo
 ### Terminated State
 
 On `SceneDelegate.swift`, from the delegate method `scene(_:willConnectTo:options:)`, check if `connectionOptions.notificationResponse` has value:
-```
+```swift
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
 
