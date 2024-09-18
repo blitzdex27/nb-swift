@@ -2,7 +2,9 @@
 
 
 ## Handling Routes for different app states (foreground, background, and terminated state)
-You can handle the notification using various delegate methods. You can handle it directly without user tapping on it while in foreground. You can handle notification taps from foreground, background, and even in terminated states.
+- You can handle the notification using various delegate methods.
+- You can handle it directly without user tapping on it while in foreground.
+- You can handle notification taps from foreground, background, and even in terminated states.
 
 ### Summary
 
