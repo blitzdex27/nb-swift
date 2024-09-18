@@ -1,10 +1,25 @@
 # Apple Push Notification
 
+## Setup
+
+### Apple developer account setup
+- On your developer account, create an explicit identifier and include the Push Notification service, then create a profile from it
+- On your app `Signing and Capabilities`, apply the newly created identifier and profile
+- Add `Push notification` capability
+- Add `Background modes` capability
+- On your developer account in `Certificates, Identifiers, and Profiles` page, go to `Keys` section, then create a private key for Push Notification. Save it and upload to safe storage because you can only download it once
+- You can use the downloaded file to 3rd party cloud messaging services like Firebase Cloud Messaging
+
+### Codebase setup
+- On `AppDelegate.swift` import the `UserNotification`
+- Implement the `UNUserNotificationCenterDelegate`
+- Handle notifications from `UNUserNotificationCenterDelegate` delegate methods
+- For more details about handling notification, continue to the next section.
 
 ## Handling Routes for different app states (foreground, background, and terminated state)
 - You can handle the notification using various delegate methods.
 - You can handle it directly without user tapping on it while in foreground.
-- You can handle notification taps from foreground, background, and even in terminated states.
+- You can handle notification taps from foreground, background, and even in terminated state.
 
 ### Summary
 
