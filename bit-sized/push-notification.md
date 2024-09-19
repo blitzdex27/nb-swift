@@ -16,6 +16,16 @@
 - Handle notifications from `UNUserNotificationCenterDelegate` delegate methods
 - For more details about handling notification, continue to the next section.
 
+#### If using Firebase for push notification
+Codebase setup
+- Install `FirebaseMessaging` dependency (via pod, swift package manager, framework, etc)
+- On `AppDelegate.swift` import the `FirebaseCore` and `FirebaseMessaging`
+- On `application(_:didFinishLaunchingWithOptions:)` delegate configure firebase and messaging delegate
+- ```swift
+  FirebaseApp.configure()
+  Messaging.messaging().delegate = self
+  ```
+
 ## Handling Routes for different app states (foreground, background, and terminated state)
 - You can handle the notification using various delegate methods.
 - You can handle it directly without user tapping on it while in foreground.
