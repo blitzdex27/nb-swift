@@ -22,9 +22,11 @@ Setup firebase cloud messaging
 - Once created, setup your APN (Apple Push Notification) authentication key
   - Go to project settings and choose 'Cloud Messaging'
   - Under `Apple app configuration`, click upload where it says `APNs Authentication Key`
-  - Upload the `APNs authentication key` we downloaded from [Certificates, Identifiers & Profiles - Apple Developer](https://developer.apple.com/account/resources/authkeys/list)
-- 
-- Once created, tap on 'All Products' and search for 'Cloud Messaging'
+  - Upload the `APNs authentication key` we downloaded from [Certificates, Identifiers & Profiles - Keys - Apple Developer](https://developer.apple.com/account/resources/authkeys/list)
+  - The `Key ID` can be retrieved by opening the key we created, this is also where we downloaded the `APNs authentication key`
+  - The `Team ID` is your team's ID or your own developer ID.
+  - Click upload
+- Once uploaded, tap on 'All Products' and search for 'Cloud Messaging'
 - Add an iOS app.
   - Enter your app's bundle id - required
   - App nickname (any name for your reference only) - optional
