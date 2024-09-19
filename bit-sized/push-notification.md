@@ -141,6 +141,7 @@ This will only be triggered when user tap on notification.
         default:
             fatalError()
         }
+      completionHandler()
     }
 ```
 
