@@ -52,7 +52,9 @@ Setup firebase cloud messaging in codebase
     }
   }
   ```
+  
 Setup receiving remote notification
+
 - On `AppDelegate`, import `UserNotifications`
 - Ask user to give authorization for receiving remote notifications
   ```swift
@@ -83,6 +85,7 @@ Setup receiving remote notification
 - Note: When user authorized the remote notifications, the app will receive an fcmToken through `messaging(_:didReceiveRegistrationToken:)` delegate method from `MessagingDelegate`. You can send it to backend or use it yourself. Note that if user reinstalled the app, it will receive the token it was receiving before it was reinstalled which is not valid anymore, but after the accepted the remote notification auth the app will receive new valid fcmToken.
 
 Sending test notification message
+
 Once your codebase is setup, you can send test notification
     - Tap on 'All Products' and search for 'Cloud Messaging'
     - Select 'Create your first campaign'
