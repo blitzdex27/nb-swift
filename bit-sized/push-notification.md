@@ -14,7 +14,7 @@ Codebase setup
 - On `AppDelegate.swift` import the `UserNotification`
 - Implement the `UNUserNotificationCenterDelegate`
 - Handle notifications from `UNUserNotificationCenterDelegate` delegate methods
-- For more details about handling notification, continue to the next [section](##handling-routes-for-different-app-states-foreground-background-and-terminated-state).
+- For more details about handling notification, continue to the next [section](##handling-routes-for-different-app-states).
 
 ## If using Firebase for push notification
 Setup firebase cloud messaging
@@ -89,7 +89,9 @@ Setup receiving remote notification
   ```
 - Note: When user authorized the remote notifications, the app will receive an fcmToken through `messaging(_:didReceiveRegistrationToken:)` delegate method from `MessagingDelegate`. You can send it to backend or use it yourself. Note that if user reinstalled the app, it will receive the token it was receiving before it was reinstalled which is not valid anymore, but after the accepted the remote notification auth the app will receive new valid fcmToken.
 
-## Handling Routes for different app states (foreground, background, and terminated state)
+## Handling Routes for different app states
+App states: foreground, background, and terminated state
+
 - You can handle the notification using various delegate methods.
 - You can handle it directly without user tapping on it while in foreground.
 - You can handle notification taps from foreground, background, and even in terminated state.
