@@ -19,27 +19,20 @@ Codebase setup
 ## If using Firebase for push notification
 Setup firebase cloud messaging
 - On [Firebase console](https://console.firebase.google.com/), create a new project.
-- Once created, setup your APN (Apple Push Notification) authentication key
+- Once created, add your iOS app on your project
+  - Enter your app's bundle id - required
+  - App nickname (any name for your reference only) - optional
+  - App store id - optional
+  - Download `GoogleService-Info.plist`, and put this file on the root of your iOS project
+
+- Once your app is added, setup your APN (Apple Push Notification) authentication key
   - Go to project settings and choose 'Cloud Messaging'
   - Under `Apple app configuration`, click upload where it says `APNs Authentication Key`
   - Upload the `APNs authentication key` we downloaded from [Certificates, Identifiers & Profiles - Keys - Apple Developer](https://developer.apple.com/account/resources/authkeys/list)
   - The `Key ID` can be retrieved by opening the key we created, this is also where we downloaded the `APNs authentication key`
   - The `Team ID` is your team's ID or your own developer ID.
   - Click upload
-- Once uploaded, tap on 'All Products' and search for 'Cloud Messaging'
-- Add an iOS app.
-  - Enter your app's bundle id - required
-  - App nickname (any name for your reference only) - optional
-  - App store id - optional
-  - Download `GoogleService-Info.plist`, and put this file on the root of your iOS project
-  - Setup firebase cloud messaging in your app (see 'Setup firebase cloud messaging in codebase' below)
-  - Once your codebase is setup, you can send test notification
-    - Navigate to your project in firebase, and go to `Cloud Messaging`. It should be added in your Project shortcuts.
-    - Select 'Create your first campaign'
-    - Choose 'Firebase Notification Messages'
-    - Enter notification title and body
-    - Then select 'Send test message'
-
+    
 Setup firebase cloud messaging in codebase
 - Install `FirebaseMessaging` dependency (via pod, swift package manager, framework, etc)
 - On `AppDelegate.swift` import the `FirebaseCore` and `FirebaseMessaging`
@@ -88,6 +81,14 @@ Setup receiving remote notification
   }
   ```
 - Note: When user authorized the remote notifications, the app will receive an fcmToken through `messaging(_:didReceiveRegistrationToken:)` delegate method from `MessagingDelegate`. You can send it to backend or use it yourself. Note that if user reinstalled the app, it will receive the token it was receiving before it was reinstalled which is not valid anymore, but after the accepted the remote notification auth the app will receive new valid fcmToken.
+
+Sending test notification message
+Once your codebase is setup, you can send test notification
+    - Tap on 'All Products' and search for 'Cloud Messaging'
+    - Select 'Create your first campaign'
+    - Choose 'Firebase Notification Messages'
+    - Enter notification title and body
+    - Then select 'Send test message'
 
 ## Handling Routes for different app states
 App states: foreground, background, and terminated state
