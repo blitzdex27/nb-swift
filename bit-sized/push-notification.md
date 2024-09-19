@@ -19,6 +19,11 @@ Codebase setup
 ## If using Firebase for push notification
 Setup firebase cloud messaging
 - On [Firebase console](https://console.firebase.google.com/), create a new project.
+- Once created, setup your APN (Apple Push Notification) authentication key
+  - Go to project settings and choose 'Cloud Messaging'
+  - Under `Apple app configuration`, click upload where it says `APNs Authentication Key`
+  - Upload the `APNs authentication key` we downloaded from [Certificates, Identifiers & Profiles - Apple Developer](https://developer.apple.com/account/resources/authkeys/list)
+- 
 - Once created, tap on 'All Products' and search for 'Cloud Messaging'
 - Add an iOS app.
   - Enter your app's bundle id - required
