@@ -14,7 +14,7 @@ Codebase setup
 - On `AppDelegate.swift` import the `UserNotification`
 - Implement the `UNUserNotificationCenterDelegate`
 - Handle notifications from `UNUserNotificationCenterDelegate` delegate methods
-- For more details about handling notification, continue to the next [section](##handling-routes-for-different-app-states-foreground-background-and-terminated state).
+- For more details about handling notification, continue to the next [section](##handling-routes-for-different-app-states-foreground-background-and-terminated-state).
 
 ## If using Firebase for push notification
 Setup firebase cloud messaging
