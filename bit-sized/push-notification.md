@@ -17,7 +17,7 @@
 - For more details about handling notification, continue to the next section.
 
 #### If using Firebase for push notification
-Codebase setup
+Setup firebase cloud messaging in codebase
 - Install `FirebaseMessaging` dependency (via pod, swift package manager, framework, etc)
 - On `AppDelegate.swift` import the `FirebaseCore` and `FirebaseMessaging`
 - On `application(_:didFinishLaunchingWithOptions:)` delegate configure firebase and messaging delegate
@@ -25,6 +25,46 @@ Codebase setup
   FirebaseApp.configure()
   Messaging.messaging().delegate = self
   ```
+- Add implementation for `MessagingDelegate`
+  ```swift
+  extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        if let fcmToken {
+            /// `fcmToken` is used for sending notification to this device.
+            print("xx-->> fcmToken \(fcmToken)")
+        }
+    }
+  }
+  ```
+Setup receiving remote notification
+- On `AppDelegate`, import `UserNotifications`
+- Ask user to give authorization for receiving remote notifications
+- ```swift
+  private func setupPushNotification() {
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { granted, error in
+            guard granted else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+  ```
+- Call this anywhere in your app, for now, we will call this in `application(_:didFinishLaunchingWithOptions:)`
+  ```swift
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    FirebaseApp.configure()
+    Messaging.messaging().delegate = self
+    setupPushNotification()
+    return true
+  }
+  ```
+- When user authorized the remote notifications, the app will receive an fcmToken through `messaging(_:didReceiveRegistrationToken:)` delegate method from `MessagingDelegate`. You can send it to backend or use it yourself.
 
 ## Handling Routes for different app states (foreground, background, and terminated state)
 - You can handle the notification using various delegate methods.
