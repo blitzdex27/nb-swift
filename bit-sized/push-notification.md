@@ -21,7 +21,7 @@ Codebase setup
 - Install `FirebaseMessaging` dependency (via pod, swift package manager, framework, etc)
 - On `AppDelegate.swift` import the `FirebaseCore` and `FirebaseMessaging`
 - On `application(_:didFinishLaunchingWithOptions:)` delegate configure firebase and messaging delegate
-- ```swift
+  ```swift
   FirebaseApp.configure()
   Messaging.messaging().delegate = self
   ```
