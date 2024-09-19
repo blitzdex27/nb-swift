@@ -3,10 +3,10 @@
 ## Setup
 
 Apple developer account setup
-- On your developer account, create an explicit identifier and include the Push Notification service, then create a profile from it
+- On your developer account, create an explicit identifier and include the `Push Notification` service, then create a provisioning profile from it
 - On your app `Signing and Capabilities`, apply the newly created identifier and profile
 - Add `Push notification` capability
-- Add `Background modes` capability
+- Add `Background modes` capability and include `Remote notifications`
 - On your developer account in `Certificates, Identifiers, and Profiles` page, go to `Keys` section, then create a private key for Push Notification. Save it and upload to safe storage because you can only download it once
 - You can use the downloaded file to 3rd party cloud messaging services like Firebase Cloud Messaging
 
