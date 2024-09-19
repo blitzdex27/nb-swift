@@ -122,17 +122,21 @@ App states: foreground, background, and terminated state
 For all app states, you can use `userNotificationCenter(_:didReceive:withCompletionHandler:)`.
 This will only be triggered when user tap on notification.
 ```swift
+    // User taps on the notification banner
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let notification = response.notification
         switch UIApplication.shared.applicationState {
-        case .active:
+        case .active: // taps from foreground
             // Handle notification
+            ViewController.shared.view.backgroundColor = .yellow
             break
-        case .inactive:
+        case .inactive: // taps from inactive state
             // Handle notification
+            ViewController.shared.view.backgroundColor = .gray
             break
-        case .background:
+        case .background: // taps from terminated state
             // Handle notification
+            ViewController.shared.view.backgroundColor = .cyan
             break
         default:
             fatalError()
