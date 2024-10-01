@@ -25,6 +25,7 @@
 - [Free assets - Kenney](https://kenney.nl/assets)
 - [Developing iOS App Today by Apple](https://developer.apple.com/documentation/xcode)
 - [Food System Design](https://www.swiftanytime.com/blog/design-food-delivery-app-mobile-system-design)
+- [Swift testing - expect macro](https://www.avanderlee.com/swift-testing/expect-macro/?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
 ## Free REST API
 - [REQRES](https://reqres.in/)
 
