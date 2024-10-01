@@ -33,3 +33,6 @@
 
 ## Mac helpful links
 - [Use more than one version of macOS on Mac](https://support.apple.com/en-ph/118282)
+
+## SwiftUI
+- [Zoom navigation](https://www.createwithswift.com/using-the-zoom-navigation-transition-in-swiftui/?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
