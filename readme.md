@@ -37,3 +37,6 @@
 
 ## SwiftUI
 - [Zoom navigation](https://www.createwithswift.com/using-the-zoom-navigation-transition-in-swiftui/?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
+
+## Xcode
+- [Xcode 16 new features](https://www.swiftwithvincent.com/blog/discover-3-new-features-of-xcode-16?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
