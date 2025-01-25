@@ -26,6 +26,7 @@
 - [Developing iOS App Today by Apple](https://developer.apple.com/documentation/xcode)
 - [Food System Design](https://www.swiftanytime.com/blog/design-food-delivery-app-mobile-system-design)
 - [Swift testing - expect macro](https://www.avanderlee.com/swift-testing/expect-macro/?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
+
 ## Free REST API
 - [REQRES](https://reqres.in/)
 
@@ -40,3 +41,6 @@
 
 ## Xcode
 - [Xcode 16 new features](https://www.swiftwithvincent.com/blog/discover-3-new-features-of-xcode-16?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
+
+## Sample project reference
+- [Food truck](https://developer.apple.com/documentation/swiftui/food_truck_building_a_swiftui_multiplatform_app)
