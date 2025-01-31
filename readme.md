@@ -35,12 +35,20 @@
 
 ## Mac helpful links
 - [Use more than one version of macOS on Mac](https://support.apple.com/en-ph/118282)
-
+- [CleanShot X](https://cleanshot.com/?utm_source=substack&utm_medium=email)
 ## SwiftUI
 - [Zoom navigation](https://www.createwithswift.com/using-the-zoom-navigation-transition-in-swiftui/?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
+- [SwiftUIX](https://github.com/SwiftUIX/SwiftUIX)
 
 ## Xcode
 - [Xcode 16 new features](https://www.swiftwithvincent.com/blog/discover-3-new-features-of-xcode-16?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
+- [DevCleaner](https://github.com/vashpan/xcode-dev-cleaner)
 
 ## Sample project reference
 - [Food truck](https://developer.apple.com/documentation/swiftui/food_truck_building_a_swiftui_multiplatform_app)
+
+## Vapor
+- [Vapor](https://github.com/vapor/vapor)
+
+## AI tools
+- [Perflexity](https://www.perplexity.ai/search/new)
