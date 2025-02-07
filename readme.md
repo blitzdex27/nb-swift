@@ -46,6 +46,10 @@
 - [Xcode 16 new features](https://www.swiftwithvincent.com/blog/discover-3-new-features-of-xcode-16?utm_source=swiftlee&utm_medium=swiftlee_weekly&utm_campaign=issue_239)
 - [DevCleaner](https://github.com/vashpan/xcode-dev-cleaner)
 
+## Xcode-simulator
+- Go to home screen: ⌘ + ⌃ + H
+- Lock phone: ⌘ + L
+
 ## Sample project reference
 - [Food truck](https://developer.apple.com/documentation/swiftui/food_truck_building_a_swiftui_multiplatform_app)
 
