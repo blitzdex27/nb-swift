@@ -61,3 +61,8 @@
 
 ## AI tools
 - [Perflexity](https://www.perplexity.ai/search/new)
+
+
+
+## Utilities
+- [Carbon](https://carbon.now.sh)
