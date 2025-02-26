@@ -53,6 +53,9 @@
 ## Sample project reference
 - [Food truck](https://developer.apple.com/documentation/swiftui/food_truck_building_a_swiftui_multiplatform_app)
 
+## Pay attention
+- [Vercel](https://vercel.com/pricing)
+
 ## Vapor
 - [Vapor](https://github.com/vapor/vapor)
 
