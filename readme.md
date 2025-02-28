@@ -65,7 +65,9 @@
 
 ## Starting project guidelines
 - [Gitignore](https://github.com/github/gitignore/blob/main/Swift.gitignore)
-
+### Navigation
+- [Navigator Pattern 2022](https://swiftwithmajid.com/2022/06/15/mastering-navigationstack-in-swiftui-navigator-pattern/)
+- [Navigator Pattern 2024](https://medium.com/stackademic/mastering-navigation-in-swiftui-the-navigator-pattern-df49b5a8de7a)
 
 
 ## Utilities
