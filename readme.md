@@ -61,6 +61,10 @@
 
 ## AI tools
 - [Perflexity](https://www.perplexity.ai/search/new)
+- 
+
+## Starting project guidelines
+- [Gitignore](https://github.com/github/gitignore/blob/main/Swift.gitignore)
 
 
 
